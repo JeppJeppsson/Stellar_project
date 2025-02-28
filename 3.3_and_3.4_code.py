@@ -199,7 +199,7 @@ def plot_neutrino(data_files, data_dir):
     fig, axs = plt.subplots(1,2)
     
     for i, data_name in enumerate(data_files):
-        print(i)
+        
         df = pd.read_csv(data_dir + data_name, sep=r'\s+', header=None)
         df.columns = col_names
         df.drop(columns=['Step'], inplace=True)
@@ -207,13 +207,13 @@ def plot_neutrino(data_files, data_dir):
         
         axs[i].semilogy(df['t'] / 1e9, df['Lv'], label = plot_title[i])
 
-        axs[i].set_ylabel(r"$\log L/L_\odot$")
+        axs[i].set_ylabel(r"$L_{\nu}/$L$_\odot$")
         axs[i].set_xlabel(r"$t \ [\mathrm{10^9 \ yr}]$")
         
         axs[i].set_title(rf"{plot_title[i]}")
         axs[i].grid(which='both', alpha=0.4, visible=True)
         
-    fig.suptitle(r'Luminosity of neutrino losses, $L_{\mathrm{v}}$')
+    #fig.suptitle(r'Luminosity of neutrino losses, $L_{\mathrm{v}}$')
     plt.tight_layout()
     plt.show()
 
@@ -231,24 +231,12 @@ def plot_neutrino_together(data_files, data_dir):
         
         plt.semilogy(df['t'] / max(df['t']), df['Lv'], label = plot_title[i])
         
-        plt.ylabel(r"$\log L/L_\odot$")
+        plt.ylabel(r"$L_{\nu}/$L$_\odot$")
         plt.xlabel(r"Normalised time")
         
-        plt.title(r'Luminosity of neutrino losses, $L_{\mathrm{v}}$')
+        #plt.title(r'Luminosity of neutrino losses, $L_{\mathrm{v}}$')
         plt.grid(which='both', alpha=0.4, visible=True)
         plt.legend()
     plt.show()
 
 plot_neutrino_together(data_name, DATA_DIR)
-
-
-
-
-
-
-
-
-
-
-
-
